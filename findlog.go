@@ -12,19 +12,22 @@ var (
 )
 
 func main() {
+	usage := fmt.Sprintf("usage: %s [base] product\n", os.Args[0])
 	if len(os.Args) > 3 {
-		fmt.Printf("%s: too many arguments", os.Args[0])
+		fmt.Printf("%s: too many arguments\n", os.Args[0])
+		fmt.Print(usage)
 		return
 	}
 
 	if len(os.Args) == 1 {
-		fmt.Printf("%s: not enough arguments", os.Args[0])
+		fmt.Printf("%s: not enough arguments\n", os.Args[0])
+		fmt.Print(usage)
 		return
 	}
 
 	if len(os.Args) == 2 {
-		base = 2.0
 		var err error
+		base = 2.0
 		product, err = strconv.ParseFloat(os.Args[1], 64)
 		if err != nil {
 			fmt.Println(err)
